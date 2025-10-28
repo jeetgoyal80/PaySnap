@@ -1,0 +1,42 @@
+# ---- Python (FastAPI backend) ----
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+.env
+.env.*
+.DS_Store
+
+# FastAPI build / cache
+*.log
+*.db
+*.pid
+
+# ---- Node (React frontend) ----
+node_modules/
+dist/
+build/
+.cache/
+.npm/
+.yarn/
+pnpm-lock.yaml
+package-lock.json
+
+# ---- IDE / OS Specific ----
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
+
+# ---- Environment & Config ----
+.env.local
+.env.development
+.env.production
+.env.test
+
+# ---- Misc ----
+*.bak
+*.tmp
