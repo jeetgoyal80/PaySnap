@@ -13,6 +13,11 @@ Whether you’re showcasing a **fintech demo**, building a **college mini-projec
 
 ---
 
+## 🌐 Live Demo
+Check out the live version of our project here: [PaySnap Live](https://paysnap-uf2g.onrender.com/)
+
+---
+
 ## 🎯 Motivation & Importance
 
 Digital payments dominate India’s economy — and **UPI (Unified Payments Interface)** is at the heart of it.  
