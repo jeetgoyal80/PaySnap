@@ -49,11 +49,12 @@ In short, PaySnap proves that even without a complex banking backend, you can bu
 | Layer | Technology |
 |-------|-------------|
 | **Frontend** | React (Vite) |
-| **Styling** | Inline / TailwindCSS (optional) |
+| **Styling** | TailwindCSS / Inline CSS |
 | **Backend** | FastAPI |
 | **QR Generator** | Python `qrcode` + `Pillow` |
 | **API Client** | Axios |
-| **Runtime** | Node.js + Uvicorn |
+| **Runtime** | Node.js (Frontend) + Uvicorn (Backend) |
+| **Containerization** | Docker & Docker Compose |
 
 ---
 
@@ -63,19 +64,22 @@ In short, PaySnap proves that even without a complex banking backend, you can bu
 PaySnap/
 │
 ├── backend/
-│ ├── main.py # FastAPI server
-│ ├── requirements.txt # Dependencies
-│ └── .env # Optional backend config
+│   ├── main.py              # FastAPI server
+│   ├── requirements.txt
+│   ├── Dockerfile       # Dependencies
+│   └── .env                 # Optional backend config
 │
 ├── frontend/
-│ ├── src/
-│ │ ├── App.jsx
-│ │ ├── components/
-│ │ │ └── QRForm.jsx
-│ │ └── ...
-│ ├── .env # FRONTEND_BASE_URL for API
-│ └── package.json
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── components/
+│   │   │   └── QRForm.jsx
+│   │   └── ...
+│   ├── .env
+│   ├── Dockerfile                   # FRONTEND_BASE_URL for API
+│   └── package.json
 │
+├── docker-compose.yml       # Root-level Docker Compose config            
 └── README.md
 ```
 
@@ -129,6 +133,52 @@ PORT=8000
 
 ```bash
 VITE_BACKEND_URL=http://127.0.0.1:8000
+```
+
+## 🐳 Docker Support
+
+**PaySnap** now includes full **Docker** and **Docker Compose** setup for both the frontend (React + Nginx) and backend (FastAPI).  
+This allows you to launch the entire project with a single command — no manual environment setup required.
+
+---
+
+### 🔹 1️⃣ Prerequisites
+
+Ensure you have the following installed:
+
+- Docker Desktop  
+- Docker Compose  
+
+---
+
+### 🔹 2️⃣ Build & Run Containers
+
+From the **project root directory** (where `docker-compose.yml` exists), run:
+
+```bash
+docker-compose up --build
+```
+This command will:
+
+Build both frontend and backend Docker images
+
+Start two containers:
+
+🧩 paysnap-backend → FastAPI app (port 8000)
+
+🎨 paysnap-frontend → React app served via Nginx (port 3000)
+
+Once containers start successfully:
+```bash
+
+🖥️ Visit the app at http://localhost:3000
+
+⚙️ Backend API runs at http://localhost:8000
+```
+### 🔹 3️⃣ Stop Containers
+
+```bash
+docker-compose down
 ```
 
 ## 🧪 How It Works
